@@ -1,5 +1,5 @@
 import fb_auth_token
-import tinder_api
+import tinder_api as api
 import config
 import re
 import json
@@ -13,20 +13,19 @@ fb_user_id = fb_auth_token.get_fb_id(fb_access_token)
 print fb_access_token
 print fb_user_id
 
-tinder_auth_token = tinder_api.get_auth_token(fb_access_token, fb_user_id)
+tinder_auth_token = api.get_auth_token(fb_access_token, fb_user_id)
 print tinder_auth_token
-# print tinder_api.authverif(fb_access_token, fb_user_id)
-# print tinder_api.get_self()
+# print api.authverif(fb_access_token, fb_user_id)
+# print api.get_self()
 
 
 def findWholeWord(w):
     return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
 
 person_id=''
-rating = 0
 
 def likeAPerson():
-    for key, value in tinder_api.get_recommendations().items():
+    for key, value in api.get_recommendations().items():
         if(key == "results"):
             for person in value:
                 rating = 0
@@ -47,15 +46,15 @@ def likeAPerson():
                     if((key=="jobs") and len(value) > 1):
                         rating += 1
                 if rating>=3:
-                    print tinder_api.like(person_id)
+                    print api.like(person_id)
         
 
 likeAPerson()
 
-#matches = tinder_api.get_updates()['matches']
+#matches = api.get_updates()['matches']
 #
 #with open('data.txt', 'w') as outfile:
 #    json.dump(matches, outfile)
 
-#ms = tinder_api.send_msg(config.match_id, config.msg)
+#ms = api.send_msg(config.match_id, config.msg)
 #print ms
