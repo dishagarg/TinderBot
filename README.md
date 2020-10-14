@@ -8,7 +8,6 @@ Simply input your facebook username/email and password in your config file. Then
 <br>
 
 
-<strong> Note: </strong> With the help of <a href=https://github.com/philipperemy/Deep-Learning-Tinder/blob/master/tinder_token.py> philliperemy </a>, I have included a programatic way to acquire your facebook_token. Now, in your config.py just input your facebook username and password.
 
 ### Run
 The app can be run by
